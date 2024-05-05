@@ -1,38 +1,144 @@
+:root {
+    --blue: #61dafb;
+    --white: #fff;
+    --dark-gray: #282c34;
+    --light-gray: #9b9b9b;
+}
+
 .App {
-  text-align: center;
+    background-color: var(--dark-gray);
+    min-height: 100vh;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page-header {
+    font-size: calc(10px + 4vmin);
+    font-weight: 700;
+    margin: 0 0 40px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.input-and-submit {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.user-input-field {
+    position: relative;
+    padding: 15px 0 0;
+    margin: 10px 0 20px 0;
+    width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-input {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--light-gray);
+    outline: 0;
+    font-size: 1.3rem;
+    color: var(--white);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .user-input-label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+}
+
+.user-input-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 0.7rem;
+    color: var(--light-gray);
+    z-index: 0;
+}
+
+.user-input:focus {
+    ~ .user-input-label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: var(--blue);
+        font-weight: 700;
+    }
+
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-color: var(--blue);
+}
+
+.form__field {
+    &:required, &:invalid {
+        box-shadow: none;
+    }
+}
+
+#submit-user-input-button {
+    width: 100%;
+    padding: 5px;
+    margin: 20px 5px 0 5px;
+    appearance: none;
+    background-color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: var(--dark-gray);
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+}
+
+#submit-user-input-button:disabled {
+    pointer-events: none;
+}
+
+#submit-user-input-button:hover {
+    color: var(--dark-gray);
+    background-color: #2B89A2FF;
+    border-color: #2B89A2FF;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-1px);
+}
+
+#submit-user-input-button:active {
+    box-shadow: none;
+    transform: translateY(0);
 }
