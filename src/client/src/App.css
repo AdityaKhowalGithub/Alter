@@ -3,6 +3,7 @@
     --white: #fff;
     --dark-gray: #282c34;
     --light-gray: #9b9b9b;
+    --red: #db5461;
 }
 
 .App {
@@ -43,7 +44,7 @@
     width: 100%;
 }
 
-.user-input {
+#user-input {
     font-family: inherit;
     width: 100%;
     border: 0;
@@ -76,7 +77,7 @@
     z-index: 0;
 }
 
-.user-input:focus {
+#user-input:focus {
     ~ .user-input-label {
         position: absolute;
         top: 0;
@@ -93,7 +94,7 @@
     border-color: var(--blue);
 }
 
-.form__field {
+#user-input {
     &:required, &:invalid {
         box-shadow: none;
     }
@@ -141,4 +142,12 @@
 #submit-user-input-button:active {
     box-shadow: none;
     transform: translateY(0);
+}
+
+#url-error {
+    color: var(--red);
+    font-size: calc(10px + 0.5vmin);
+    margin-top: 20px;
+    width: 100%;
+    justify-self: flex-start;
 }
