@@ -13,8 +13,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     font-size: calc(10px + 2vmin);
+    padding-top: 50px;
 }
 
 .input-content-wrapper {
@@ -151,3 +151,19 @@
     width: 100%;
     justify-self: flex-start;
 }
+
+/* Report */
+
+.report-text {
+    padding-top: 60px;
+    font-size: calc(10px + 1vmin);
+
+    width: 80%;
+}
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ import axios from 'axios';
 import './App.css';
 import validator from 'validator/es';
 import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 const testApiCall = () => {
     axios.get('http://localhost:8080').then((data) => {
@@ -10,6 +11,7 @@ const testApiCall = () => {
 }
 
 const App = () => {
+    // const history = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
 
     const validate = (value) => {
@@ -45,7 +47,7 @@ const App = () => {
     return (
         <div className="App">
             <div className={"input-content-wrapper"}>
-                <p className={"page-header"}>Generate Alt text for website</p>
+                <p className={"page-header"}>Calculate Accessibility Score</p>
 
                 <div className={"input-and-submit"}>
                     <div className={"user-input-field"}>
@@ -54,14 +56,18 @@ const App = () => {
                         <label htmlFor={"Website URL"} className={"user-input-label"}>Website URL</label>
                     </div>
 
-                    <button id={"submit-user-input-button"} role={"button"} onClick={submitURL}>Submit</button>
+                    <button id={"submit-user-input-button"} role={"button"} onClick={submitURL}>Calculate</button>
                     {errorMessage && <span id={"url-error"}>{errorMessage}</span>}
                     {/*  the fact that this moves bothers me so much  */}
                 </div>
-
             </div>
 
             {/*<button onClick={testApiCall}>Testing Make API Call</button>*/}
+
+            <div className={"report-text"}>
+                <div>add percentage here</div>
+                <div>add analysis text here</div>
+            </div>
 
         </div>
     );
