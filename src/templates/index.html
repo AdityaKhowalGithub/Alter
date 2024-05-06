@@ -32,10 +32,6 @@
             border-radius: 8px;
         }
 
-        label {
-            font-weight: bold;
-        }
-
         input[type="text"], input[type="submit"] {
             width: 100%;
             padding: 10px;
@@ -81,13 +77,79 @@
             box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
             transform: translateY(-1px);
         }
+
+        .user-input-field {
+            position: relative;
+            padding: 10px 0 0;
+            margin: 10px 0 20px 0;
+            width: 100%;
+        }
+
+        #user-input {
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid var(--light-gray);
+            outline: 0;
+            font-size: 1.3rem;
+            color: var(--white);
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+            border-radius: 0;
+
+            &::placeholder {
+                color: transparent;
+            }
+
+            &:placeholder-shown ~ .user-input-label {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }
+        }
+
+        .user-input-label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 0.7rem;
+            color: var(--light-gray);
+            z-index: 0;
+        }
+
+        #user-input:focus {
+            ~ .user-input-label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: var(--blue);
+                font-weight: 700;
+            }
+
+            padding-bottom: 6px;
+            font-weight: 700;
+            border-width: 3px;
+            border-color: var(--blue);
+        }
+
+        #user-input:required, #user-input:invalid {
+            box-shadow: none;
+        }
+
     </style>
 </head>
 <body>
 <h1>Website Accessibility Checker</h1>
 <form action="/process" method="post">
-    <label for="website_name">Enter Website Name:</label><br>
-    <input type="text" id="website_name" name="website_name"><br>
+    <div class="user-input-field">
+        <input type="text" id="user-input" placeholder="Enter Website Name" name="website_name">
+        <label for="user-input" class="user-input-label">Enter Website Name</label>
+    </div>
+
     <input type="submit" value="Check Accessibility">
 </form>
 </body>
