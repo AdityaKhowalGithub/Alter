@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Accessibility Checker</title>
+    <style>
+        :root {
+            --blue: #61dafb;
+            --white: #fff;
+            --dark-gray: #282c34;
+            --light-gray: #9b9b9b;
+            --red: #db5461;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--dark-gray);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--white);
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: var(--blue);
+            color: var(--dark-gray);
+            border: none;
+            cursor: pointer;
+
+            width: 100%;
+            padding: 5px;
+            margin: 20px 5px 0 5px;
+            appearance: none;
+            border-radius: 15px;
+            box-sizing: border-box;
+            display: inline-block;
+            font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 16px;
+            font-weight: 600;
+            line-height: normal;
+            min-height: 40px;
+            outline: none;
+            text-align: center;
+            text-decoration: none;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            will-change: transform;
+        }
+
+        input[type="submit"]:hover {
+            color: var(--dark-gray);
+            background-color: #2B89A2FF;
+            border-color: #2B89A2FF;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+            transform: translateY(-1px);
+        }
+
+        .user-input-field {
+            position: relative;
+            padding: 10px 0 0;
+            margin: 10px 0 20px 0;
+            width: 100%;
+        }
+
+        #user-input {
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid var(--light-gray);
+            outline: 0;
+            font-size: 1.3rem;
+            color: var(--white);
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+            border-radius: 0;
+
+            &::placeholder {
+                color: transparent;
+            }
+
+            &:placeholder-shown ~ .user-input-label {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }
+        }
+
+        .user-input-label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 0.7rem;
+            color: var(--light-gray);
+            z-index: 0;
+        }
+
+        #user-input:focus {
+            ~ .user-input-label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: var(--blue);
+                font-weight: 700;
+            }
+
+            padding-bottom: 6px;
+            font-weight: 700;
+            border-width: 3px;
+            border-color: var(--blue);
+        }
+
+        #user-input:required, #user-input:invalid {
+            box-shadow: none;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Website Accessibility Checker</h1>
+<form action="/process" method="post">
+    <div class="user-input-field">
+        <input type="text" id="user-input" placeholder="Enter Website Name" name="website_name">
+        <label for="user-input" class="user-input-label">Enter Website Name</label>
+    </div>
+
+    <input type="submit" value="Check Accessibility">
+</form>
+</body>
+</html>

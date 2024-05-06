@@ -8,6 +8,7 @@ from langchain_community.llms.octoai_endpoint import OctoAIEndpoint
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+import json
 
 app = Flask(__name__)
 
@@ -35,7 +36,7 @@ def process():
     html_header_splits = html_splitter.split_text_from_url(website_name)
     splits = text_splitter.split_documents(html_header_splits)
     vector_store = Milvus.from_documents(
-    splits,
+        splits,
         embedding=embeddings,
         connection_args={"host": "localhost", "port": 19530},
         collection_name="starwars"
@@ -43,9 +44,20 @@ def process():
     retriever = vector_store.as_retriever()
     chain = ({"context": retriever, "question": RunnablePassthrough()} | prompt | llm | StrOutputParser())
 
-
     out = str(chain.invoke("What is my score and why?"))  # Process the data
-    return render_template('result.html', output=out)
+
+    # Extract accessibility score
+    accessibility_score = extract_accessibility_score(out)
+
+    # Render template with accessibility score and chart
+    return render_template('result.html', output=out, accessibility_score=accessibility_score)
+
+def extract_accessibility_score(output):
+    # Extract the accessibility score from the output
+    # You need to implement your own logic to extract the score from the output
+    # For example, using regular expressions or string manipulation
+    accessibility_score = 90  # Replace this with your actual score extraction logic
+    return accessibility_score
 
 if __name__ == '__main__':
     app.run(debug=True)

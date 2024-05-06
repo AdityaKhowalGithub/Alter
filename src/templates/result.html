@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Score</title>
+    <style>
+        :root {
+            --blue: #61dafb;
+            --white: #fff;
+            --dark-gray: #282c34;
+            --light-gray: #9b9b9b;
+            --red: #db5461;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--dark-gray);
+        }
+        h1 {
+            text-align: center;
+            color: var(--white);
+        }
+        .output-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 3px var(--blue);
+        }
+        .output {
+            line-height: 1.6;
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+<h1>Accessibility Score</h1>
+<div class="output-container">
+    <div class="output">
+        {{ output|safe }}
+    </div>
+</div>
+</body>
+</html>
